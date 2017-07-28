@@ -99,11 +99,13 @@ public class RecyclerviewActivity extends AppCompatActivity{
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        //移除单个子view,需要调用 mAdapter.setOneItemRemoved();因为脚布局位置也需要改变
                         mDatas.remove(position);
                         mAdapter.setOneItemRemoved();
                         mAdapter.notifyDataSetChanged();
                     }
                 });
+                //item中的个别控件设置监听方法
                 holder.getView(R.id.tv_rv).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -111,7 +113,7 @@ public class RecyclerviewActivity extends AppCompatActivity{
                     }
                 });
             }
-
+            //绑定数据
             @Override
             public void convert(PhRecyclerViewAdapter.ViewHolder holder, String s) {
                 holder.setText(R.id.tv_rv, s);
